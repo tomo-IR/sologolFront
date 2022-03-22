@@ -1,21 +1,17 @@
-<h1>Login</h1>
-<p>login works!</p>
-<ng-container>
-    <mat-form-field>
-        <input matInput type="email">
-    </mat-form-field>
-
-
-    <button mat-raised-button color="accent">submit</button>
-    <p>Material Buttonを表示していく</p>
-    <button mat-button>mat-button</button>
-    <button mat-stroked-button>mat-stroked-button</button>
-    <button mat-flat-button>mat-flat-button</button>
-    <button mat-raised-button>mat-raised-button</button>
-    <button mat-icon-button>
-        <mat-icon>schedule</mat-icon>
-    </button>
-    <button mat-fab>fab</button>
-    <button mat-mini-fab>mini-fab</button>
-
-</ng-container>
+<mat-card class="login_container">
+	<h1>Login</h1>
+	<ng-container>
+		<form [formGroup]="fg">
+			<mat-form-field appearance="fill" class="fg">
+				<mat-label>username</mat-label>
+				<input matInput type="text" formControlName="username">
+				<mat-error *ngIf="username.invalid && !username.untouched">{{getFormErrorMessege()}}</mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="fill" class="fg">
+				<mat-label>password</mat-label>
+				<input matInput type="text" formControlName="password">
+			</mat-form-field>
+			<button mat-raised-button color="accent" (click)="login()">Login</button>
+		</form>
+	</ng-container>
+</mat-card>
